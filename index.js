@@ -86,3 +86,30 @@ function validateBody(schema) {
         next()
     }
 }
+
+//MIDDLEWARE VALIDATION PARAMETER
+
+function validateIParams(schema) {
+     return (req, res, next) => {
+        const { error } = schema.validate(req.params, { 
+            abortEarly: false,
+            convert: true,
+            allowUnknown: false,
+        })
+
+        if (error) {
+            return errorResponse(
+                res, 
+                'parameter tidak valid', 
+                400, 
+                error.details.map(item => item ({
+                    field: item.path.join('.'),
+                    message: item.message,
+                }))
+            )
+        }
+
+        req.params = value
+        next()
+    }
+}
