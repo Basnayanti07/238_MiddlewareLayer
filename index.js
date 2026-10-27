@@ -38,11 +38,11 @@ app.use((req, res, next) => {
 
 //RESPONE ENVELOPE
 
-function successResponse(res, message, data, status, status = 200) {
+function successResponse(res, message, status, details = null) {
     return res.status(status).json({
         success: true,
         message,
-        data,
+        data: null,
         error: null,
     })
 }
