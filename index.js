@@ -6,3 +6,10 @@ const app = expreess()
 const port = 3000
 const { Pool } = pg
 
+const pool = new Pool({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'mahasiswa',
+    password: '12345678',
+    port: 5432
+})
